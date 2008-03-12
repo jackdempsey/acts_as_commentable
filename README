@@ -6,9 +6,14 @@ Allows for comments to be added to multiple and different models.
 == Resources
 
 Install
- * Run the following command:
+
+ * To install as a plugin:
  
- script/plugin install http://juixe.com/svn/acts_as_commentable
+  script/plugin install http://juixe.com/svn/acts_as_commentable
+ 
+ * To install as a gem:
+ 
+ rake install
  
  * Create a new rails migration and add the following self.up and self.down methods
  
