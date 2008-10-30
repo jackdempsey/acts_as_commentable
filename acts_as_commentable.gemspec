@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
                 "init.rb",
                 "install.rb",
 		"lib/acts_as_commentable.rb", 
-		"lib/comment.rb", 
+		"lib/comment.rb"]
   s.test_files = ["test/acts_as_commentable_test.rb"]
   s.rdoc_options = ["--main", "README.txt"]
 end
