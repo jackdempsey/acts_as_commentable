@@ -1,3 +1,5 @@
+require 'activerecord'
+
 # ActsAsCommentable
 module Juixe
   module Acts #:nodoc:
