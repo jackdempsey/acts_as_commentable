@@ -3,7 +3,7 @@ require 'rake/gempackagetask'
 
 PLUGIN = "acts_as_commentable"
 NAME = "acts_as_commentable"
-VERSION = "1.0.0"
+GEM_VERSION = "1.0.0"
 AUTHOR = "Cosmin Radoi"
 EMAIL = "unknown@juixe.com"
 HOMEPAGE = "http://www.juixe.com/techknow/index.php/2006/06/18/acts-as-commentable-plugin/"
@@ -11,7 +11,7 @@ SUMMARY = "Plugin/gem that provides comment functionality"
 
 spec = Gem::Specification.new do |s|
   s.name = NAME
-  s.version = VERSION
+  s.version = GEM_VERSION
   s.platform = Gem::Platform::RUBY
   s.has_rdoc = true
   s.extra_rdoc_files = ["README", "MIT-LICENSE"]
@@ -31,5 +31,5 @@ Rake::GemPackageTask.new(spec) do |pkg|
 end
 
 task :install => [:package] do
-  sh %{sudo gem install pkg/#{NAME}-#{VERSION}}
+  sh %{sudo gem install pkg/#{NAME}-#{GEM_VERSION}}
 end
