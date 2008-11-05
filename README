@@ -36,7 +36,7 @@ Install
 
 == Usage
  
- * Make you ActiveRecord model act as commentable.
+ * Make your ActiveRecord model act as commentable.
  
  class Model < ActiveRecord::Base
  	acts_as_commentable
