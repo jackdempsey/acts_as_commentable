@@ -48,15 +48,16 @@ Install
  comment = Comment.new
  comment.comment = 'Some comment'
  model.comments << comment
- 
- * Each comment reference commentable object
- 
- model = Model.find(1)
- model.comments.get(0).commtable == model
+
+ # Following doesn't work/make sense to me. Leaving for historical sake -- Jack
+ # * Each comment reference commentable object
+ #
+ # model = Model.find(1)
+ # model.comments.get(0).commentable == model
 
 == Credits
 
-Xelipe - This plugin is heavily influced by Acts As Taggable.
+Xelipe - This plugin is heavily influenced by Acts As Taggable.
 
 == More
 
