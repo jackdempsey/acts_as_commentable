@@ -11,7 +11,7 @@ Install
 
    * To install as a plugin:
  
-    script/plugin install http://github.com/jackdempsey/acts_as_commentable
+    script/plugin install http://github.com/jackdempsey/acts_as_commentable.git
 
   Merb/Rails
   
