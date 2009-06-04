@@ -3,7 +3,7 @@ require 'rake/gempackagetask'
 
 PLUGIN = "acts_as_commentable"
 GEM = "acts_as_commentable"
-GEM_VERSION = "2.0.0"
+GEM_VERSION = "2.0.3"
 EMAIL = "unknown@juixe.com"
 HOMEPAGE = "http://www.juixe.com/techknow/index.php/2006/06/18/acts-as-commentable-plugin/"
 SUMMARY = "Plugin/gem that provides comment functionality"
