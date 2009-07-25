@@ -48,7 +48,7 @@ module Juixe
         # Helper method to sort comments by date
         def comments_ordered_by_submitted
           Comment.find(:all,
-            :conditions => ["commentable_id = ? and commentable_type = ?", id, self.type.name],
+            :conditions => ["commentable_id = ? and commentable_type = ?", id, self.class.name],
             :order => "created_at DESC"
           )
         end
