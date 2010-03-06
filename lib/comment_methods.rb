@@ -9,28 +9,21 @@ module ActsAsCommentable
     
     def self.included(comment_model)
       comment_model.extend Finders
-      comment_model.named_scope :in_order, {:order => 'created_at ASC'}
-      comment_model.named_scope :recent, {:order => "created_at DESC"}
-      comment_model.named_scope :limit, lambda {|limit| {:limit => limit}}
+      comment_model.scope :in_order, comment_model.order('created_at ASC')
+      comment_model.scope :recent,   comment_model.order('created_at DESC')
     end
     
     module Finders
       # Helper class method to lookup all comments assigned
       # to all commentable types for a given user.
       def find_comments_by_user(user)
-        find(:all,
-          :conditions => ["user_id = ?", user.id],
-          :order => "created_at DESC"
-        )
+        where(["user_id = ?", user.id]).order("created_at DESC")
       end
 
       # Helper class method to look up all comments for 
       # commentable class name and commentable id.
       def find_comments_for_commentable(commentable_str, commentable_id)
-        find(:all,
-          :conditions => ["commentable_type = ? and commentable_id = ?", commentable_str, commentable_id],
-          :order => "created_at DESC"
-        )
+        where(["commentable_type = ? and commentable_id = ?", commentable_str, commentable_id]).order("created_at DESC")
       end
 
       # Helper class method to look up a commentable object
