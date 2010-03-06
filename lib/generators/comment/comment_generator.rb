@@ -1,4 +1,6 @@
-class CommentGenerator < Rails::Generator::Base
+require 'rails/generators'
+
+class CommentGenerator < Rails::Generators::Base
    def manifest
      record do |m|
        m.directory 'app/models'
@@ -10,4 +12,4 @@ class CommentGenerator < Rails::Generator::Base
    def file_name
      "create_comments"
    end
- end
+end
