@@ -9,9 +9,15 @@ Install
 
   Rails
 
-   * To install as a plugin:
- 
+   * To install as a plugin
+
+   ** Rails 3:
     script/plugin install http://github.com/jackdempsey/acts_as_commentable.git
+
+   ** Rails 2:
+    script/plugin install http://github.com/jackdempsey/acts_as_commentable.git -r 2.x
+
+   
 
    * To install as a gem
    sudo gem install 
@@ -27,6 +33,8 @@ Install
 
     add the folloowing line to your environment.rb
     config.gem 'jackdempsey-acts_as_commentable', :lib => 'acts_as_commentable', :source => "http://gems.github.com"
+
+   * The gem's have also been pushed to gemcutter.org, so if you have that in your sources, you can just 'gem install acts_as_commentable'
    
  
  Generate your comment model:
