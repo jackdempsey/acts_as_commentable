@@ -13,7 +13,7 @@ spec = Gem::Specification.new do |s|
   s.version = GEM_VERSION
   s.platform = Gem::Platform::RUBY
   s.has_rdoc = false
-  s.extra_rdoc_files = ["README", "MIT-LICENSE"]
+  s.extra_rdoc_files = ["README.rdoc", "MIT-LICENSE"]
   s.summary = SUMMARY
   s.description = s.summary
   s.author = 'Cosmin Radoi, Jack Dempsey, Xelipe, Chris Eppstein'
@@ -25,7 +25,7 @@ spec = Gem::Specification.new do |s|
 
   s.require_path = 'lib'
   s.autorequire = GEM
-  s.files = %w(MIT-LICENSE README) + Dir.glob("{generators,lib,tasks}/**/*") + %w(init.rb install.rb)
+  s.files = %w(MIT-LICENSE README.rdoc) + Dir.glob("{generators,lib,tasks}/**/*") + %w(init.rb install.rb)
 end
 
 
