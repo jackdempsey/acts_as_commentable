@@ -2,16 +2,17 @@
 
 Gem::Specification.new do |s|
   s.name = %q{acts_as_commentable}
-  s.version = "2.1.0"
+  s.version = "2.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Cosmin Radoi, Jack Dempsey, Xelipe, Chris Eppstein"]
   s.autorequire = %q{acts_as_commentable}
-  s.date = %q{2010-10-06}
+  s.date = %q{2010-10-07}
   s.description = %q{Plugin/gem that provides comment functionality}
   s.email = %q{unknown@juixe.com}
   s.extra_rdoc_files = ["README", "MIT-LICENSE"]
-  s.files = ["MIT-LICENSE", "README", "generators/comment", "generators/comment/comment_generator.rb", "generators/comment/templates", "generators/comment/templates/comment.rb", "generators/comment/templates/create_comments.rb", "lib/acts_as_commentable.rb", "lib/comment_methods.rb", "lib/commentable_methods.rb", "lib/tasts", "lib/tasts/acts_as_commentable_tasks.rake", "init.rb", "install.rb"]
+  s.files = ["MIT-LICENSE", "README", "generators/comment", "generators/comment/comment_generator.rb", "generators/comment/templates", "generators/comment/templates/comment.rb", "generators/comment/templates/create_comments.rb", "lib/acts_as_commentable.rb", "lib/comment_methods.rb", "lib/commentable_methods.rb", "lib/tasks", "lib/tasks/acts_as_commentable_tasks.rake", "init.rb", "install.rb"]
+  s.has_rdoc = false
   s.homepage = %q{http://www.juixe.com/techknow/index.php/2006/06/18/acts-as-commentable-plugin/}
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.7}
