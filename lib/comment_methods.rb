@@ -29,8 +29,9 @@ module ActsAsCommentable
       # Helper class method to look up a commentable object
       # given the commentable class name and id 
       def find_commentable(commentable_str, commentable_id)
-        commentable_str.constantize.find(commentable_id)
-      end
+        model = commentable_str.constantize
+        model.respond_to?(:find_comments_for) ? model.find(commentable_id) : nil
+			end
     end
   end
 end
