@@ -22,7 +22,7 @@ module Juixe
         # Helper method to lookup for comments for a given object.
         # This method is equivalent to obj.comments.
         def find_comments_for(obj)
-          commentable = ActiveRecord::Base.send(:class_name_of_active_record_descendant, self).to_s
+          commentable = self.base_class.name
           Comment.find_comments_for_commentable(commentable, obj.id)
         end
         
@@ -30,7 +30,7 @@ module Juixe
         # the mixin commentable type written by a given user.  
         # This method is NOT equivalent to Comment.find_comments_for_user
         def find_comments_by_user(user) 
-          commentable = ActiveRecord::Base.send(:class_name_of_active_record_descendant, self).to_s
+          commentable = self.base_class.name
           Comment.where(["user_id = ? and commentable_type = ?", user.id, commentable]).order("created_at DESC")
         end
       end
