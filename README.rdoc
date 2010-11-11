@@ -20,7 +20,8 @@ Install
  
 Generate your comment model:
 
-script/generate comment
+** Rails 3: rails g comment
+** Rails 2: script/generate comment
 
 Then migrate your database:
 
