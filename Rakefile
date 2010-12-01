@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'rake/gempackagetask'
+require 'rake/testtask'
 
 PLUGIN = "acts_as_commentable"
 GEM = "acts_as_commentable"
@@ -44,4 +45,12 @@ task :gemspec do
     f.write(spec.to_ruby)
   end
 end
+
+desc 'Test the acts_as_commentable plugin.'
+Rake::TestTask.new(:test) do |t|
+  t.libs << 'lib'
+  t.pattern = 'test/**/*_test.rb'
+  t.verbose = true
+end
+
 
