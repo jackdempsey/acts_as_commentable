@@ -8,4 +8,8 @@ ActiveRecord::Schema.define(:version => 0) do
     u.string :name
   end
 
+  create_table :walls do |w|
+    w.string :name
+  end
+
 end
