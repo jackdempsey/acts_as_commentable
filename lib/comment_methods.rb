@@ -6,17 +6,17 @@ module ActsAsCommentable
   #   recent: Returns comments by how recently they were created (created_at DESC).
   #   limit(N): Return no more than N comments.
   module Comment
-    
+
     def self.included(comment_model)
       comment_model.extend Finders
       comment_model.scope :in_order, comment_model.order('created_at ASC')
       comment_model.scope :recent,   comment_model.order('created_at DESC')
     end
-    
+
     module Finders
       # Helper class method to lookup all comments assigned
       # to all commentable types for a given user.
-       def find_comments_by_user(user, role = "comments")
+      def find_comments_by_user(user, role = "comments")
         where(["user_id = ? and role = ?", user.id, role]).order("created_at DESC")
       end
 
@@ -31,7 +31,12 @@ module ActsAsCommentable
       def find_commentable(commentable_str, commentable_id)
         model = commentable_str.constantize
         model.respond_to?(:find_comments_for) ? model.find(commentable_id) : nil
-			end
+      end
+
+      def is_comment_type?(type)
+        type.to_s == role.ro_s
+      end
+
     end
   end
 end
