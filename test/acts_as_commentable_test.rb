@@ -136,4 +136,22 @@ class ActsAsCommentableTest < Test::Unit::TestCase
     assert_equal [public_comment], wall.public_comments
   end
 
+  def test_is_comment_type
+    post = Post.create(:text => "Awesome post !")
+    comment = Comment.new(:title => "First Comment", :comment => 'Super comment')
+    post.add_comment(comment)
+    assert_equal true, comment.is_comment_type?(:comment)
+
+    wall = Wall.create(:name => "wall")
+    private_comment = Comment.new(:title => "First Comment", :comment => 'Super comment')
+    wall.add_private_comment(private_comment)
+    assert_equal true, private_comment.is_comment_type?(:private)
+
+    public_comment = Comment.new(:title => "First Comment", :comment => 'Super comment')
+    wall.add_public_comment(public_comment)
+    assert_equal true, public_comment.is_comment_type?(:public)
+    assert_equal false, public_comment.is_comment_type?(:comment)
+
+  end
+
 end

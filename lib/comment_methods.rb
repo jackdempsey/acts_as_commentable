@@ -13,6 +13,10 @@ module ActsAsCommentable
       comment_model.scope :recent,   comment_model.order('created_at DESC')
     end
 
+    def is_comment_type?(type)
+      type.to_s == role.singularize.to_s
+    end
+
     module Finders
       # Helper class method to lookup all comments assigned
       # to all commentable types for a given user.
@@ -32,11 +36,6 @@ module ActsAsCommentable
         model = commentable_str.constantize
         model.respond_to?(:find_comments_for) ? model.find(commentable_id) : nil
       end
-
-      def is_comment_type?(type)
-        type.to_s == role.ro_s
-      end
-
     end
   end
 end
