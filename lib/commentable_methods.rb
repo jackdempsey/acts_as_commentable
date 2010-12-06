@@ -43,6 +43,10 @@ module Juixe
                 Comment.where(["user_id = ? and commentable_type = ? and role = ?", user.id, commentable, "#{role.to_s}"]).order("created_at DESC")
               end
 
+              def is_comment_type?(type)
+                type.to_s == #{role.to_s}
+              end
+
               def #{method_name}_ordered_by_submitted
                 Comment.find_comments_for_commentable(self.class.name, id, "#{role.to_s}")
               end
