@@ -15,12 +15,15 @@ Install
 
 * To install as a plugin
 ** Rails 3: script/plugin install http://github.com/jackdempsey/acts_as_commentable.git
+
 ** Rails 2: script/plugin install http://github.com/jackdempsey/acts_as_commentable.git -r 2.x
 
  
 Generate your comment model:
 
-script/generate comment
+** Rails 3: rails g comment
+
+** Rails 2: script/generate comment
 
 Then migrate your database:
 
