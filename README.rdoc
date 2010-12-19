@@ -44,6 +44,16 @@ rake db:migrate
  commentable = Post.find(1)
  comments = commentable.comments.recent.limit(10).all
 
+ * Add multiple type of comments to a model
+ 
+ class Todo < ActiveRecord::Base
+ 	acts_as_commentable :public, :private
+ end
+
+ * Fetch comments for a this model:
+
+ public_comments = Todo.find(1).public_comments
+ private_comments = Todo.find(1).private_comments
 
 == Credits
 
