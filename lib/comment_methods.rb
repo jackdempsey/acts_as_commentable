@@ -9,8 +9,8 @@ module ActsAsCommentable
 
     def self.included(comment_model)
       comment_model.extend Finders
-      comment_model.scope :in_order, comment_model.order('created_at ASC')
-      comment_model.scope :recent,   comment_model.order('created_at DESC')
+      comment_model.scope :in_order, -> { comment_model.order('created_at ASC') }
+      comment_model.scope :recent, -> { comment_model.order('created_at DESC') }
     end
 
     def is_comment_type?(type)
