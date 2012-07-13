@@ -36,13 +36,13 @@ Then migrate your database:
 
 == Usage
  
-Make your ActiveRecord model act as commentable.
+Make your ActiveRecord model act as commentable:
  
   class Post < ActiveRecord::Base
     acts_as_commentable
   end
  
-Add a comment to a model instance
+Add a comment to a model instance:
  
   commentable = Post.create
   commentable.comments.create(:title => "First comment.", :comment => "This is the first comment.")
@@ -52,7 +52,7 @@ Fetch comments for a commentable model:
   commentable = Post.find(1)
   comments = commentable.comments.recent.limit(10).all
 
-Add multiple type of comments to a model
+Add multiple type of comments to a model:
  
   class Todo < ActiveRecord::Base
     acts_as_commentable :public, :private
