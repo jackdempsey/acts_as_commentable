@@ -1,5 +1,6 @@
 require 'test/unit'
 require 'logger'
+require 'pry'
 require File.expand_path(File.dirname(__FILE__) + '/../rails/init')
 
 ActiveRecord::Migration.verbose = false
@@ -151,7 +152,6 @@ class ActsAsCommentableTest < Test::Unit::TestCase
     wall.add_public_comment(public_comment)
     assert_equal true, public_comment.is_comment_type?(:public)
     assert_equal false, public_comment.is_comment_type?(:comment)
-
   end
 
 end
