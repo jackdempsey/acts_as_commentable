@@ -12,7 +12,7 @@ Add the following line to your Gemfile
 
 === Rails 3
 
-  gem 'acts_as_commentable', '2.0.1'
+  gem 'acts_as_commentable', '3.0.1'
 
 === Rails 2
 
