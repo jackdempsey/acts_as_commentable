@@ -1,1 +1,1 @@
-rvm use ruby-1.9.2@acts_as_commentable --create
+rvm use ruby-1.9.3-p194@acts_as_commentable --create
