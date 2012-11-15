@@ -58,6 +58,8 @@ Add multiple type of comments to a model:
     acts_as_commentable :public, :private
   end
 
+*Note:* This feature is only available from version 4.0 and above
+
 Fetch comments for a this model:
 
   public_comments = Todo.find(1).public_comments
