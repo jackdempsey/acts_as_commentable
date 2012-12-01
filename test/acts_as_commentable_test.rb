@@ -121,6 +121,22 @@ class ActsAsCommentableTest < Test::Unit::TestCase
     assert_equal [public_comment, public_comment2], wall.public_comments_ordered_by_submitted
   end
 
+  def test_comments_ordered_by_submitted
+    post = Post.create(:text => "Awesome post !")
+    comment = post.comments.create(:title => "First comment.", :comment => "This is the first comment.")
+    comment2 = post.comments.create(:title => "Second comment.", :comment => "This is the second comment.")
+    assert_equal [comment2, comment], post.comments.recent
+
+    wall = Wall.create(:name => "wall")
+    private_comment = wall.private_comments.create(:title => "wall private comment", :comment => "Yipiyayeah !")
+    private_comment2 = wall.private_comments.create(:title => "wall private comment", :comment => "Yipiyayeah !")
+    assert_equal [private_comment2, private_comment], wall.private_comments.recent
+
+    public_comment = wall.public_comments.create(:title => "wall public comment", :comment => "Yipiyayeah !")
+    public_comment2 = wall.public_comments.create(:title => "wall public comment", :comment => "Yipiyayeah !")
+    assert_equal [public_comment2, public_comment], wall.public_comments.recent
+  end
+
   def test_add_comment
     post = Post.create(:text => "Awesome post !")
     comment = Comment.new(:title => "First Comment", :comment => 'Super comment')
