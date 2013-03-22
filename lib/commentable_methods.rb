@@ -27,6 +27,7 @@ module Juixe
                   :conditions => ["role = ?", role.to_s],
                   :before_add => Proc.new { |x, c| c.role = role.to_s }}
             end
+            has_many :all_comments, {:as => :commentable, :dependent => :destroy, class_name: "Comment"}
           else
             has_many :comments, {:as => :commentable, :dependent => :destroy}
           end
