@@ -91,7 +91,7 @@ class ActsAsCommentableTest < Test::Unit::TestCase
     assert_equal [public_comment], Wall.find_public_comments_for(wall)
   end
 
-  def test_find_comments_by_user
+  def test_find_public_private_comments_by_user
     user = User.create(:name => "Mike")
     post = Post.create(:text => "Awesome post !")
     comment = post.comments.create(:title => "First comment.", :comment => "This is the first comment.", :user => user)
@@ -105,7 +105,7 @@ class ActsAsCommentableTest < Test::Unit::TestCase
     assert_equal [public_comment], Wall.find_public_comments_by_user(user)
   end
 
-  def test_comments_ordered_by_submitted
+  def test_comments_public_private_ordered_by_submitted
     post = Post.create(:text => "Awesome post !")
     comment = post.comments.create(:title => "First comment.", :comment => "This is the first comment.")
     comment2 = post.comments.create(:title => "Second comment.", :comment => "This is the second comment.")

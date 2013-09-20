@@ -21,10 +21,10 @@ module Juixe
           if !comment_roles.blank?
             comment_roles.each do |role|
               has_many "#{role.to_s}_comments".to_sym,
+                -> { where(role: role.to_s) },
                 {:class_name => "Comment",
                   :as => :commentable,
                   :dependent => :destroy,
-                  :conditions => ["role = ?", role.to_s],
                   :before_add => Proc.new { |x, c| c.role = role.to_s }}
             end
             has_many :all_comments, {:as => :commentable, :dependent => :destroy, class_name: "Comment"}
