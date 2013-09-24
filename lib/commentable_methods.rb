@@ -46,7 +46,7 @@ module Juixe
               end
 
               def #{method_name}_ordered_by_submitted
-                Comment.find_comments_for_commentable(self.class.name, id, "#{role.to_s}")
+                Comment.find_comments_for_commentable(self.class.name, id, "#{role.to_s}").order("created_at")
               end
 
               def add_#{method_name.singularize}(comment)
