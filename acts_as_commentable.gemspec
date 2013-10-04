@@ -7,7 +7,6 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Cosmin Radoi, Jack Dempsey, Xelipe, Chris Eppstein"]
   s.autorequire = %q{acts_as_commentable}
-  s.date = %q{2010-03-13}
   s.description = %q{Plugin/gem that provides comment functionality}
   s.email = %q{unknown@juixe.com}
   s.extra_rdoc_files = ["README.rdoc", "MIT-LICENSE"]
