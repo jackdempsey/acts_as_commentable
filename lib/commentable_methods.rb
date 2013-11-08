@@ -6,10 +6,38 @@ module Juixe
     module Commentable #:nodoc:
 
       def self.included(base)
-        base.extend ClassMethods  
+        base.extend ClassMethods
+      end
+
+      module HelperMethods
+        private
+        def define_role_based_inflection(role)
+          send("define_role_based_inflection_#{Rails.version.first}", role)
+        end
+
+        def define_role_based_inflection_3(role)
+          has_many "#{role.to_s}_comments".to_sym,
+                   has_many_options(role).merge(:conditions => { role: role.to_s })
+        end
+
+        def define_role_based_inflection_4(role)
+          has_many "#{role.to_s}_comments".to_sym,
+                   -> { where(role: role.to_s) },
+                   has_many_options(role)
+        end
+
+        def has_many_options(role)
+          {:class_name => "Comment",
+                  :as => :commentable,
+                  :dependent => :destroy,
+                  :before_add => Proc.new { |x, c| c.role = role.to_s }
+          }
+        end
       end
 
       module ClassMethods
+        include HelperMethods
+
         def acts_as_commentable(*args)
           comment_roles = args.to_a.flatten.compact.map(&:to_sym)
 
@@ -20,12 +48,7 @@ module Juixe
 
           if !comment_roles.blank?
             comment_roles.each do |role|
-              has_many "#{role.to_s}_comments".to_sym,
-                -> { where(role: role.to_s) },
-                {:class_name => "Comment",
-                  :as => :commentable,
-                  :dependent => :destroy,
-                  :before_add => Proc.new { |x, c| c.role = role.to_s }}
+              define_role_based_inflection(role)
             end
             has_many :all_comments, {:as => :commentable, :dependent => :destroy, class_name: "Comment"}
           else
@@ -40,7 +63,7 @@ module Juixe
                 Comment.find_comments_for_commentable(commentable, obj.id, "#{role.to_s}")
               end
 
-              def self.find_#{method_name}_by_user(user) 
+              def self.find_#{method_name}_by_user(user)
                 commentable = self.base_class.name
                 Comment.where(["user_id = ? and commentable_type = ? and role = ?", user.id, commentable, "#{role.to_s}"]).order("created_at DESC")
               end
