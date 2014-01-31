@@ -45,7 +45,11 @@ Make your ActiveRecord model act as commentable:
 Add a comment to a model instance:
  
   commentable = Post.create
-  commentable.comments.create(:title => "First comment.", :comment => "This is the first comment.")
+  comment = commentable.comments.create
+  comment.title = "First comment."
+  comment.comment = "This is the first comment."
+  comment.save
+
 
 Fetch comments for a commentable model:
  
