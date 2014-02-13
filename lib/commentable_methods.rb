@@ -12,7 +12,7 @@ module Juixe
       module HelperMethods
         private
         def define_role_based_inflection(role)
-          send("define_role_based_inflection_#{Rails.version.first}", role)
+          send("define_role_based_inflection_#{ActiveRecord::VERSION::MAJOR}", role)
         end
 
         def define_role_based_inflection_3(role)
