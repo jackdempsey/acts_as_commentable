@@ -39,20 +39,23 @@ module Juixe
         include HelperMethods
 
         def acts_as_commentable(*args)
-          comment_roles = args.to_a.flatten.compact.map(&:to_sym)
+          options = args.to_a.flatten.compact.partition{ |opt| opt.kind_of? Hash }
+          comment_roles = options.last.blank? ? nil : options.last.flatten.compact.map(&:to_sym)
+
+          join_options = options.first.blank? ? [{}] : options.first
+          throw 'Only one set of options can be supplied for the join' if join_options.length > 1
+          join_options = join_options.first
 
           class_attribute :comment_types
           self.comment_types = (comment_roles.blank? ? [:comments] : comment_roles)
-
-          options = ((args.blank? or args[0].blank?) ? {} : args[0])
 
           if !comment_roles.blank?
             comment_roles.each do |role|
               define_role_based_inflection(role)
             end
-            has_many :all_comments, {:as => :commentable, :dependent => :destroy, class_name: "Comment"}
+            has_many :all_comments, { :as => :commentable, :dependent => :destroy, class_name: 'Comment' }.merge(join_options)
           else
-            has_many :comments, {:as => :commentable, :dependent => :destroy}
+            has_many :comments, {:as => :commentable, :dependent => :destroy}.merge(join_options)
           end
 
           comment_types.each do |role|
