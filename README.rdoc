@@ -69,6 +69,22 @@ Fetch comments for a this model:
   public_comments = Todo.find(1).public_comments
   private_comments = Todo.find(1).private_comments
 
+
+By default, `acts_as_commentable` will assume you're using a `Comment` model.
+You can change this, and change any other join options by passing an options
+hash:
+
+    class Todo < ActiveRecord::Base
+      acts_as_commentable { class_name: 'MyComment' }
+    end
+
+This also works in conjunction with comment types:
+
+    class Todo < ActiveRecord::Base
+      acts_as_commentable :public, :private, { class_name: 'MyComment' }
+    end
+
+
 == Credits
 
 Xelipe - This plugin is heavily influenced by Acts As Taggable.
