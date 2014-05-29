@@ -1,7 +1,7 @@
 = Acts As Commentable
 
-Provides a single Comment model that can be added to any model(s) within your app.  It creates a
-Comment model and handles the plumbing between that model and any models that you declare to be
+Provides a single Comment model that can be attached to any model(s) within your app. It creates
+a Comment model and handles the plumbing between that model and any models that you declare to be
 commentable models.
 
 
