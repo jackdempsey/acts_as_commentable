@@ -54,8 +54,10 @@ module Juixe
               define_role_based_inflection(role)
             end
             has_many :all_comments, { :as => :commentable, :dependent => :destroy, class_name: 'Comment' }.merge(join_options)
+            accepts_nested_attributes_for "#{role.to_s}_comments".to_sym, allow_destroy: true, reject_if: proc { |attributes| attributes['title'].blank? && attributes['comment'].blank? }
           else
             has_many :comments, {:as => :commentable, :dependent => :destroy}.merge(join_options)
+            accepts_nested_attributes_for :comments, allow_destroy: true, reject_if: proc { |attributes| attributes['title'].blank? && attributes['comment'].blank? }
           end
 
           comment_types.each do |role|
