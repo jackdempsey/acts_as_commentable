@@ -49,7 +49,7 @@ GIT
 PATH
   remote: .
   specs:
-    acts_as_commentable (4.0.0)
+    acts_as_commentable (4.0.1)
 
 GEM
   remote: http://rubygems.org/
