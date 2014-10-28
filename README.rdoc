@@ -77,7 +77,7 @@ By default, `acts_as_commentable` will assume you are using a `Comment` model.
 To change this, or change any other join options, pass in an options hash:
 
     class Todo < ActiveRecord::Base
-      acts_as_commentable { class_name: 'MyComment' }
+      acts_as_commentable class_name: 'MyComment'
     end
 
 This also works in conjunction with comment types:
