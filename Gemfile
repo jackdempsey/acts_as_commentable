@@ -7,4 +7,5 @@ group :development do
   gem 'activerecord-deprecated_finders', git: 'git://github.com/rails/activerecord-deprecated_finders.git'
   gem 'sqlite3'
   gem 'pry'
+  gem 'test-unit'
 end
