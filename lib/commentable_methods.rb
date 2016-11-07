@@ -26,6 +26,10 @@ module Juixe
                    has_many_options(role)
         end
 
+        def define_role_based_inflection_5(role)
+          define_role_based_inflection_4(role)
+        end
+
         def has_many_options(role)
           {:class_name => "Comment",
                   :as => :commentable,
