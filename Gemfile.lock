@@ -49,7 +49,7 @@ GIT
 PATH
   remote: .
   specs:
-    acts_as_commentable (4.0.1)
+    acts_as_commentable (4.0.2)
 
 GEM
   remote: http://rubygems.org/
@@ -58,9 +58,11 @@ GEM
     atomic (1.1.14)
     builder (3.1.4)
     coderay (1.0.7)
+    concurrent-ruby (1.1.5)
     erubis (2.7.0)
     hike (1.2.3)
-    i18n (0.6.5)
+    i18n (0.9.5)
+      concurrent-ruby (~> 1.0)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
