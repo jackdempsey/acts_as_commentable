@@ -49,7 +49,7 @@ GIT
 PATH
   remote: .
   specs:
-    acts_as_commentable (4.0.1)
+    acts_as_commentable (4.0.2)
 
 GEM
   remote: http://rubygems.org/
@@ -76,7 +76,7 @@ GEM
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
-    rake (10.1.0)
+    rake (13.0.1)
     slop (2.4.4)
     sprockets (2.10.0)
       hike (~> 1.2)
