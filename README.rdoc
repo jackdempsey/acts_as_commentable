@@ -1,6 +1,9 @@
 = Acts As Commentable
 
-Allows for comments to be added to multiple and different models.
+Provides a single Comment model that can be attached to any model(s) within your app. It creates
+a Comment model and handles the plumbing between that model and any models that you declare to be
+commentable models.
+
 
 == Installation :
 
@@ -16,7 +19,7 @@ Add the following line to your Gemfile
 
 === Rails 2
 
-  gem 'acts_as_commentable', git: 'git@github.com:jackdempsey/acts_as_commentable.git'  , branch: '2.x'
+  gem 'acts_as_commentable', git: 'git@github.com:jackdempsey/acts_as_commentable.git', branch: '2.x'
 
  
 == Generator
@@ -30,19 +33,19 @@ Add the following line to your Gemfile
   
   script/generate comment
 
-Then migrate your database:
+Then migrate your database to add the comments model:
 
   rake db:migrate
 
 == Usage
- 
-Make your ActiveRecord model act as commentable:
+
+Make the desired ActiveRecord model act as commentable:
  
   class Post < ActiveRecord::Base
     acts_as_commentable
   end
- 
-Add a comment to a model instance:
+
+Add a comment to a model instance by adding the following to the controller:
  
   commentable = Post.create
   comment = commentable.comments.create
@@ -51,12 +54,12 @@ Add a comment to a model instance:
   comment.save
 
 
-Fetch comments for a commentable model:
+Fetch comments for the commentable model by adding the following to the view:
  
   commentable = Post.find(1)
   comments = commentable.comments.recent.limit(10).all
 
-Add multiple type of comments to a model:
+You can also add different types of comments to a model:
  
   class Todo < ActiveRecord::Base
     acts_as_commentable :public, :private
@@ -64,18 +67,17 @@ Add multiple type of comments to a model:
 
 *Note:* This feature is only available from version 4.0 and above
 
-Fetch comments for a this model:
+To fetch the different types of comments for this model:
 
   public_comments = Todo.find(1).public_comments
   private_comments = Todo.find(1).private_comments
 
 
-By default, `acts_as_commentable` will assume you're using a `Comment` model.
-You can change this, and change any other join options by passing an options
-hash:
+By default, `acts_as_commentable` will assume you are using a `Comment` model.
+To change this, or change any other join options, pass in an options hash:
 
     class Todo < ActiveRecord::Base
-      acts_as_commentable { class_name: 'MyComment' }
+      acts_as_commentable class_name: 'MyComment'
     end
 
 This also works in conjunction with comment types:
