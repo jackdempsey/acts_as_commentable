@@ -49,7 +49,7 @@ GIT
 PATH
   remote: .
   specs:
-    acts_as_commentable (4.0.1)
+    acts_as_commentable (4.0.2)
 
 GEM
   remote: http://rubygems.org/
@@ -95,7 +95,7 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    tzinfo (0.3.37)
+    tzinfo (0.3.61)
 
 PLATFORMS
   ruby
